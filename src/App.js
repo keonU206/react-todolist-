@@ -1,11 +1,11 @@
-import React, { useState, useRef, useCallback } from 'react';
-import TodoTemplate from './component/TodoTemplate';
-import TodoInsert from './component/TodoInsert';
-import TodoList from './component/TodoList';
+import React, { useState, useRef, useCallback } from "react";
+import TodoTemplate from "./component/TodoTemplate";
+import TodoInsert from "./component/TodoInsert";
+import TodoList from "./component/TodoList";
 
 function data() {
   const dataArray = [];
-  for (let i = 0; i < 2500; i++) {
+  for (let i = 0; i < 10; i++) {
     dataArray.push({
       id: i,
       text: `할일 ${i + 1}`,
@@ -30,25 +30,25 @@ function App() {
       setTodos((todos) => todos.concat(todo));
       nextId.current += 1;
     },
-    [todos],
+    [todos]
   );
 
   const onRemove = useCallback(
     (id) => {
       setTodos((todos) => todos.filter((todo) => todo.id !== id));
     },
-    [todos],
+    [todos]
   );
 
   const onToggle = useCallback(
     (id) => {
       setTodos((todos) =>
         todos.map((todo) =>
-          todo.id === id ? { ...todo, checked: !todo.checked } : todo,
-        ),
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo
+        )
       );
     },
-    [todos],
+    [todos]
   );
 
   return (
